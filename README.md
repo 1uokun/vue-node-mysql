@@ -19,17 +19,17 @@ m.lagou.com<br/>
 ### 说明：
 
 - part 1 package.json
-    <li>
+    
     前端
-    </li>
-    > npm install axios vuex vue-router
-    <li>
+    
+ > npm install axios vuex vue-router
+    
     后端
-    </li>
-    > npm install express nodemon mysql
-    <li> 
+   
+ > npm install express nodemon mysql
+    
     sass
-    </li>
+    
 > 本项目css使用sass预编译，如果你能翻墙那可以使用npm，如果不能，请使用淘宝镜像。  <br/>
 > cnpm install node-sass sass-loader    <br/>
 
