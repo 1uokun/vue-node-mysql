@@ -3,7 +3,8 @@
 m.lagou.com<br/>
 做了即时搜索，关键词过滤<br/>
 登录注册页面的账号密码错误提示<br/>
-
+<img src="http://l-k.co/1.jpg">
+<img src="http://l-k.co/2.jpg">
 ### 技术栈：
 >	vue2.0 vuex中间件    <br/>
 >	node express中间件   <br/>
