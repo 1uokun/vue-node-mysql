@@ -19,7 +19,8 @@ m.lagou.com<br/>
 ### 说明：
 
 - part 1 package.json
-    
+ >  
+ 
     前端
     
  > npm install axios vuex vue-router
