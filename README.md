@@ -3,14 +3,14 @@
 m.lagou.com<br/>
 做了即时搜索，关键词过滤<br/>
 登录注册页面的账号密码错误提示<br/>
-<img src="http://l-k.co/1.jpg">
-<img src="http://l-k.co/2.jpg">
+<img src="https://github.com/1uokun/vue-node-mysql/blob/master/static/QQ%E6%88%AA%E5%9B%BE20180529230333.png" />
+<img src="https://github.com/1uokun/vue-node-mysql/blob/master/static/QQ%E6%88%AA%E5%9B%BE20180529230411.png" />
 ### 技术栈：
 >	vue2.0 vuex中间件    <br/>
 >	node express中间件   <br/>
 >	mysql 增删改查        <br/>
 
-欢迎下载这个仓库的所有文件，文件不大，只有537kb
+
 ------------------------------------------------
 
 ### 使用方法
@@ -20,19 +20,19 @@ m.lagou.com<br/>
 ### 说明：
 
 - part 1 package.json
- >  
- 
+ >
+
     前端
-    
+
  > npm install axios vuex vue-router
-    
+
     后端
-   
+
  > npm install express nodemon mysql
-    
+
     sass
-    
-> 本项目css使用sass预编译，如果你能翻墙那可以使用npm，如果不能，请使用淘宝镜像。  <br/>
+
+> 本项目css使用sass预编译，如果不能翻墙，请使用淘宝镜像或yarn。  <br/>
 > cnpm install node-sass sass-loader    <br/>
 
 - part2 前端                              <br/>
@@ -46,4 +46,4 @@ https://segmentfault.com/a/1190000011288053 <br/>
 这篇文章写了该功能的细节  <br/>
 另外推荐  <br/>
 npm install nodemon --save-dev    <br/>
-在server文件中开启node server 
+在server文件中开启node server
