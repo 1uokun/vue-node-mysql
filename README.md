@@ -1,7 +1,7 @@
-### vue框架入门级全栈项目 - 拉钩网H5版本
-<img src="https://github.com/1uokun/vue-node-mysql/blob/master/static/QQ%E6%88%AA%E5%9B%BE20180529230333.png" />
-<img src="https://github.com/1uokun/vue-node-mysql/blob/master/static/QQ%E6%88%AA%E5%9B%BE20180529230411.png" />
-
+### vue入门级全栈项目 - 拉钩网H5版本
+<img src="https://github.com/1uokun/vue-node-mysql/blob/master/static/QQ%E6%88%AA%E5%9B%BE20180529230333.png" width='40%'/>
+<img src="https://github.com/1uokun/vue-node-mysql/blob/master/static/QQ%E6%88%AA%E5%9B%BE20180529230411.png" width='40%'/>
+<br/>
 
 ### 使用方法
 ```bash
