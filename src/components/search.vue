@@ -5,7 +5,7 @@
 
 		<!--搜索框-->
 		<div class="linputer">
-            <div class="lbutton" 
+            <div class="lbutton"
             	 @click="cityToggle"
             >
                 <span class="city">
@@ -15,13 +15,13 @@
             </div>
 
             <div class="rinput">
-                <input 	class="inputer" 
-                		type="text" 
-                		placeholder="搜索职位或公司" 
-                		v-model="keyWord" 
+                <input 	class="inputer"
+                		type="text"
+                		placeholder="搜索职位或公司"
+                		v-model="keyWord"
                 		@keyup.enter="getListmore"
                 >
-                <span 	class="search" 
+                <span 	class="search"
                 		@click="getListmore"
                 >
                 	<!--搜索按钮图标-->
@@ -36,20 +36,20 @@
         <div class="listcon">
 
         	<!--搜索历史提示-->
-            <ul class="history"  
+            <ul class="history"
             	v-if="history_show"
             >
-            	<li class="activeable history-item" 
-            		v-for="(h,index) in this.$store.state.history" 
+            	<li class="activeable history-item"
+            		v-for="(h,index) in this.$store.state.history"
             		@click="click_search(h)"
             	>
             		<span class="text">
             			{{h}}
             		</span>
-					
+
 					<!--删除搜索历史按钮-->
             		<div class="delcon">
-            			<span 	class="glyphicon-delete" 
+            			<span 	class="glyphicon-delete"
             					@click.stop="history_delete(index)"
             			>
             			</span>
@@ -57,19 +57,19 @@
 
             	</li>
             </ul>
-			
+
 			<!--用户搜索条件提示-->
-            <div	class="custominfo none" 
+            <div	class="custominfo none"
             		v-if="custominfo"
 
             >
                 将搜索地区和关键词设为定制条件
-            
+
             </div>
-			
+
 			<!--无结果提示-->
             <ul class="list">
-            	<li class="list-empty" 
+            	<li class="list-empty"
             		v-if="empty"
             	>
             		<span class="glyphicon-face"></span>
@@ -84,8 +84,8 @@
 
 		<!--搜索结果list-->
 		<ul class="list" style="margin-bottom:45px;">
-	      <li 	class="list-item" 
-	      		v-for="(l,index) in filterSearch" 
+	      <li 	class="list-item"
+	      		v-for="(l,index) in filterSearch"
 	      		v-if="index<=num"
 	      >
 	        <img 	class="item-logo"
@@ -117,17 +117,17 @@
 	          </p>
 	        </div>
 	      </li>
-	      <li 	class="list-more" 
-	      		@click="getMore" 
+	      <li 	class="list-more"
+	      		@click="getMore"
 	      		v-if="filterSearch.length!==0 && num<filterSearch.length"
 	      >
 	  			加载更多
 	  	  </li>
 	    </ul>
-		
+
 
 		<!--城市选择city-->
-		<div 	class="fdialog-rcon" 
+		<div 	class="fdialog-rcon"
 				v-show="hide"
 		>
 	        <div id="header">
@@ -135,13 +135,13 @@
 	        		<span 	class="pull-left glyphicon-corner">
 	        		</span>
 	        	</div>
-	        	
+
 	        	拉勾网
-	        	
+
 	        </div>
 
 			<div class="fdialog-rcon-child">
-		        <div 	id="city-table"  
+		        <div 	id="city-table"
 		        		v-for="city in this.$store.state.citys"
 		        >
 		        	<div class="Acronym">
@@ -151,7 +151,7 @@
 		        	</div>
 
 		        	<ul class="city-list">
-		        		<li v-for="list in city.cityList" 
+		        		<li v-for="list in city.cityList"
 		        			@click="citySelect(list)"
 		        			v-bind:class="{selected:l==list}"
 		        		>
@@ -188,8 +188,9 @@ export default {
 			empty:false,
 			history_show:true,
 			l:'',
-		} 
+		}
 	},
+
 	methods:{
 		cityToggle() {
 			return this.hide = this.hide == false ? true : false;
@@ -208,31 +209,31 @@ export default {
 			return this.getListmore()
 		},
 		getMore(){
-	      this.num+=15
-	    },
-	    getListmore: function() {
-	    	  this.num = 15
-	          let keyWord = this.keyWord
-	          let search_result = this.$store.state.search_result
-	          let city_selected = this.city_selected
-	          let filterSearch = this.filterSearch = []
-	          
-	          search_result.forEach(function(item){
-	          		if((city_selected == '全国' || item.city == city_selected) &&item.positionName.indexOf(keyWord)>=0){
+      this.num+=15
+    },
+    getListmore: function() {
+        this.num = 15
+          let keyWord = this.keyWord
+          let search_result = this.$store.state.search_result
+          let city_selected = this.city_selected
+          let filterSearch = this.filterSearch = []
 
-	          			filterSearch.push(item)
-	          		}
-	          })
-	          if(filterSearch==0) {
-	          	this.empty=true
-	          }else {
-	          	this.empty=false
-	          }
-	          this.custominfo=true
-			  this.history_show = false
-			  //记录搜索历史，localstrong
-	          this.$store.dispatch('history_record',keyWord)
-	      },
+          search_result.forEach(function(item){
+              if((city_selected == '全国' || item.city == city_selected) &&item.positionName.indexOf(keyWord)>=0){
+
+                filterSearch.push(item)
+              }
+          })
+          if(filterSearch==0) {
+            this.empty=true
+          }else {
+            this.empty=false
+          }
+          this.custominfo=true
+      this.history_show = false
+      //记录搜索历史，localstrong
+          this.$store.dispatch('history_record',keyWord)
+      },
 	}
 }
 </script>

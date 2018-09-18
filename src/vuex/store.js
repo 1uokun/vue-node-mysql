@@ -48,9 +48,9 @@ const state = {
     positionName_selected:getCookie('p'),
     city_selected:getCookie('c'),
     salary_selected:getCookie('s'),
-    listmore:[],        //首页列表
     history:[],         //搜索历史
-    search_result:[],    //搜索列表
+    search_result:[],   //搜索列表
+    search_data: [],    //搜索数据（这里用的假数据而不是通过接口获取，可以练习vuex）
     filterSearch:[]
 }
 export default new Vuex.Store({

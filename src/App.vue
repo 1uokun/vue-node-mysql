@@ -5,40 +5,42 @@
 </template>
 
 <script>
-import {setCookie,getCookie} from './assets/js/cookie.js';
+import {getCookie} from './assets/js/cookie.js';
 
 export default {
   name: 'app',
   created(){
+    // 在首页时就加载search页面的数据，练习vuex
     let state = this.$store.state
     let city_selected = state.city_selected
     let salary_selected = state.salary_selected
     let positionName_selected = state.positionName_selected
-    let listmore = state.listmore
+    let search_data = state.search_data
     this.$http.get('../static/listmore.json').then((response)=>{
-            let b = response.data.content.data.page.result
-            //search页面数据
-            state.search_result = b
-            //判断用户是否登录
-            if(getCookie('username')=='') {
-                state.listmore = b
-            }else {
-                //mine.html页面 精准搜索设置
-                b.forEach(item => {
-                  if(
-                      (
-                        city_selected == '全国' || 
-                        item.city == city_selected
-                      ) &&
-                        item.salary == salary_selected && 
-                        item.positionName.indexOf(positionName_selected) >= 0
-                    )
-                    {
-                        listmore.push(item)
-                    }
-                })
-            }
+      let b = response.data.content.data.page.result
+      //search页面数据
+      state.search_result = b
+      //判断用户是否登录
+      if(getCookie('username')=='') {
+        state.search_data = b
+      }else {
+        //mine.html页面 精准搜索设置
+        b.forEach(item => {
+          if(
+            (
+              city_selected == '全国' ||
+              item.city == city_selected
+            ) &&
+            item.salary == salary_selected &&
+            item.positionName.indexOf(positionName_selected) >= 0
+          )
+          {
+            search_data.push(item)
+          }
+        })
+      }
     })
+    // 加载历史搜索
     return this.$store.dispatch('history_read')
   },
 }
@@ -65,10 +67,10 @@ h2, h3, p {
 }
 ul{
   margin: 0;
-    list-style: none;
-    -webkit-padding-start: 0;
-    -moz-padding-start: 0;
-    padding-start: 0;
+  list-style: none;
+  -webkit-padding-start: 0;
+  -moz-padding-start: 0;
+  padding-start: 0;
 }
 li{
   list-style: none;
@@ -78,7 +80,7 @@ a{
   text-decoration: none;
 }
 img, input {
-      border: none;
+    border: none;
     outline: none;
     padding: 0;
 }

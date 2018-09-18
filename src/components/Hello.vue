@@ -8,8 +8,8 @@
         <span class="info">
           10秒钟定制职位
         </span>
-        <a  href="/login" 
-            class="go" 
+        <a  href="/login"
+            class="go"
             @click="jump(s='/user')"
         >
           去登录
@@ -31,9 +31,8 @@
 
     <!--公司列表-->
     <ul class="list">
-      <li class="list-item" 
-          v-for="(l,index) in this.$store.state.listmore" 
-          v-if="index<=num"
+      <li class="list-item"
+          v-for="l in listmore"
       >
         <img v-bind:src="'http://www.lagou.com/'+l.companyLogo" class="item-logo">
 
@@ -55,7 +54,7 @@
 
 
     <div id="copyright"><p>©2015 lagou.com, all right reserved </p><div class="copyright-item"><span class="phone active">移动版&nbsp;·&nbsp;</span><span class="computer">电脑版&nbsp;·&nbsp;</span><a href="#header">回顶部</a></div></div>
-  
+
   <myfoot></myfoot>
 
   </div>
@@ -73,21 +72,33 @@ export default {
   },
   data(){
     return {
-      num:15,
+      listmore:[],
+      page:1,
       nologin:true,
       haslogin:false,
     }
   },
   mounted(){
     if(getCookie('username')){
-      this.nologin = false
+      this.nologin = false;
       this.haslogin = true
     }
+    this.getListData()
   },
   methods:{
-    getMore(){
-      this.num+=15
+    // 加载首页列表
+    getListData(){
+      this.$http.get('/api/list/more?pageSize=15&pageNo='+this.page)
+        .then((response)=>{
+          this.listmore = [...this.listmore,...response.data.content.data.page.result]
+        })
     },
+
+    // 加载更多
+    getMore(){
+      this.page+=1;
+      return this.getListData()
+    }
   }
 }
 </script>
