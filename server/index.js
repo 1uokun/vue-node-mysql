@@ -3,10 +3,12 @@ const userApi = require('./api/userApi');
 const listApi = require('./api/listmore');
 
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(cookieParser())
 // 后端api路由
 app.use('/api/user', userApi);
 app.use('/api/list', listApi);

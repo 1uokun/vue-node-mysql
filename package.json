@@ -11,6 +11,7 @@
     "server": "nodemon server/index.js"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.3",
     "nodemon": "1.18.3",
     "vue": "2.4.2",
     "vue-router": "2.7.0"

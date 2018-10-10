@@ -75,7 +75,7 @@ export default {
                             window.history.back()
                         }.bind(this),1000)
                     }
-                 
+
                 })
             }
         },
@@ -116,27 +116,27 @@ export default {
     .login-wrap, .register-wrap{text-align:center;margin-top:100px;}
     .login-wrap{
         input{
-            display:block; 
-            width:250px; 
-            height:40px; 
-            line-height:40px; 
-            margin:0 auto; 
-            margin-bottom: 10px; 
-            outline:none; border:1px solid #888; 
-            padding:10px; 
+            display:block;
+            width:250px;
+            height:40px;
+            line-height:40px;
+            margin:0 auto;
+            margin-bottom: 10px;
+            outline:none; border:1px solid #888;
+            padding:10px;
             box-sizing:border-box;
         }
         p{color:red;}
         button{
-            display:block; 
-            width:250px; 
-            height:40px; 
-            line-height: 40px; 
-            margin:0 auto; 
-            border:none; 
-            background-color:#41b883; 
-            color:#fff; 
-            font-size:16px; 
+            display:block;
+            width:250px;
+            height:40px;
+            line-height: 40px;
+            margin:0 auto;
+            border:none;
+            background-color:#41b883;
+            color:#fff;
+            font-size:16px;
             margin-bottom:5px;
         }
         span{cursor:pointer;

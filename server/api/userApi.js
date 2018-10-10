@@ -12,8 +12,8 @@ var jsonWrite = function(res, ret) {
 	if(typeof ret === 'undefined') {
 		res.send('err')
 	} else {
-		//res.json(ret);
-		res.send('ok')
+		res.json(ret);
+		// res.send('ok')
 	}
 };
 // 增加用户接口
@@ -61,6 +61,7 @@ router.post('/selectUser', (req,res) => {
 				if(result[0]===undefined) {
 					res.send('0')
 				}else {
+				  res.cookie('isAuth', 1, {maxAge: 60 * 1000});
 					jsonWrite(res, result);
 				}
 			})
@@ -72,16 +73,20 @@ router.post('/selectUser', (req,res) => {
 router.put('/updateUser', (req,res) => {
   var sql_update = $sql.user.update_password;
   var params = req.body;
-  conn.query(sql_update,[params.password,params.id], function(err, result) {
-    if(err) {
-      console.log(err)
-    }
-    if(result[0]===undefined) {
-      res.send('0')
-    }else {
-      jsonWrite(res, result);
-    }
-  })
+  if(req.cookies.isAuth){
+    conn.query(sql_update,[params.password,params.id], function(err, result) {
+      if(err) {
+        console.log(err)
+      }
+      if(result[0]===undefined) {
+        res.send('0')
+      }else {
+        jsonWrite(res, result);
+      }
+    })
+  }else {
+    res.send('no auth')
+  }
 });
 
 module.exports = router;
