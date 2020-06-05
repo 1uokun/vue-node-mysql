@@ -61,7 +61,9 @@ router.post('/selectUser', (req,res) => {
 				if(result[0]===undefined) {
 					res.send('0')
 				}else {
-				  res.cookie('isAuth', 1, {maxAge: 60 * 1000});
+				  // Set-Cookie
+          // 如果是https环境必须添加 { secure: true }
+				  res.cookie('isAuth', 1, {maxAge: 7 * 24 * 60 * 1000, secure: true, signed: true});
 					jsonWrite(res, result);
 				}
 			})

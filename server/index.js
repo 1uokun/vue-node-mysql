@@ -8,7 +8,19 @@ const express = require('express');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser())
+app.use(cookieParser("secret_password"));
+
+//cookie验证
+app.use(function (req, res, next) {
+  console.log("多个cookies",req.cookies); //Cookie: name1=value1; name2=value2
+  console.log("单个cookie",req.cookie);  //Cookie: name=value
+  console.log("加密后的cookie",req.signedCookies);
+  if(req.signedCookies.isAuth === "1"){
+    // 验证拦截
+  }
+  return next();
+});
+
 // 后端api路由
 app.use('/api/user', userApi);
 app.use('/api/list', listApi);
